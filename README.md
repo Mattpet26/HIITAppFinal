@@ -5,4 +5,4 @@
 - Workout routines will have a list of workouts within them
 - Workouts have names, descriptions, and most importantly TIME. All of which are set by the user
 
-![Image](../HIIT.PNG)
+![Image](../../HIIT.PNG)
