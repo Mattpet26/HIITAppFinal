@@ -6,8 +6,9 @@ namespace HIITAppFinal.Models
     public class Item
     {
         public string Id { get; set; }
-        public string Text { get; set; } //nameof
-        public string Description { get; set; }
-        public List<Workout> Workouts { get; set; }
+        public string Text { get; set; }
+        public int Set { get; set; }
+        public int Timer { get; set; }
+        public int Rest { get; set; }
     }
 }

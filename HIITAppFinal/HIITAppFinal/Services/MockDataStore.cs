@@ -10,19 +10,6 @@ namespace HIITAppFinal.Services
     {
         readonly List<Item> items;
 
-        public MockDataStore()
-        {
-            items = new List<Item>()
-            {
-                new Item { Id = Guid.NewGuid().ToString(), Text = "First item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Second item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Third item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Fourth item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Fifth item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Sixth item", Description="This is an item description." }
-            };
-        }
-
         public async Task<bool> AddItemAsync(Item item)
         {
             items.Add(item);
@@ -52,7 +39,7 @@ namespace HIITAppFinal.Services
             return await Task.FromResult(items.FirstOrDefault(s => s.Id == id));
         }
 
-        public async Task<IEnumerable<Item>> GetItemsAsync(bool forceRefresh = false)
+        public async Task<List<Item>> GetItemsAsync(bool forceRefresh = false)
         {
             return await Task.FromResult(items);
         }

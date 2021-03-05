@@ -31,15 +31,19 @@
             <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
                 
                 <Label Text="Welcome to HIIT Timer!" FontSize="Title"/>
-                <Label x:Name="ViewUserName" Text="" FontSize="Title" Padding="0,0,0,0"/>
+                <Label x:Name="ViewUserName" Text="{Binding User}" FontSize="Title" Padding="0,0,0,0"/>
+                <Label x:Name="StarCounter" Text="{Binding StarCount}" IsVisible="false"/>
 
                 <StackLayout x:Name="LoginSection" IsVisible="true">
-                    <Label Text="Enter a UserName"/>
-                    <Entry x:Name="UserName" Placeholder="UserName"/>
-                    <Label Text="Enter a Password"></Label>
+                    <Label Text="Enter Username"/>
+                    <Entry x:Name="UserName"
+                           Placeholder="Username"/>
+                    
+                    <Label Text="Enter Password"></Label>
                     <Entry x:Name="Password"
                            IsPassword="True"
                            Placeholder="Password"/>
+                    
                     <Button Text="Save"
                             Clicked="Login_Button_Clicked"/>
                 </StackLayout>
@@ -50,12 +54,22 @@
                         Text="Logout"
                         Clicked="Logout_Clicked"
                         IsVisible="false"></Button>
-                
+
                 <Button x:Name="Clicky"
                         Text="Click Me"
                         Clicked="Handle_Clicked"
                         IsVisible="false"></Button>
 
+                <Button x:Name="Accelerate"
+                        Text="Accelerate!!"
+                        Clicked="Accelerate_Button"
+                        IsVisible="{Binding Trigger}"/>
+
+                <Button x:Name="HiddenButton"
+                        Text="Sneaky Button"
+                        IsVisible="false"
+                        IsEnabled="True"
+                        Clicked="Hidden_Button"/>
             </StackLayout>
         </ScrollView>
     </Grid>

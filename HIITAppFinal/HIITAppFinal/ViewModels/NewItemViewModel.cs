@@ -10,7 +10,9 @@ namespace HIITAppFinal.ViewModels
     public class NewItemViewModel : BaseViewModel
     {
         private string text;
-        private string description;
+        private int set;
+        private int timer;
+        private int rest;
 
         public NewItemViewModel()
         {
@@ -22,8 +24,7 @@ namespace HIITAppFinal.ViewModels
 
         private bool ValidateSave()
         {
-            return !String.IsNullOrWhiteSpace(text)
-                && !String.IsNullOrWhiteSpace(description);
+            return !String.IsNullOrWhiteSpace(text);
         }
 
         public string Text
@@ -32,10 +33,22 @@ namespace HIITAppFinal.ViewModels
             set => SetProperty(ref text, value);
         }
 
-        public string Description
+        public int Set
         {
-            get => description;
-            set => SetProperty(ref description, value);
+            get => set;
+            set => SetProperty(ref set, value);
+        }
+
+        public int Timer
+        {
+            get => timer;
+            set => SetProperty(ref timer, value);
+        }
+
+        public int Rest
+        {
+            get => rest;
+            set => SetProperty(ref rest, value);
         }
 
         public Command SaveCommand { get; }
@@ -53,7 +66,9 @@ namespace HIITAppFinal.ViewModels
             {
                 Id = Guid.NewGuid().ToString(),
                 Text = Text,
-                Description = Description
+                Set = Set,
+                Timer = Timer,
+                Rest = Rest
             };
 
             await DataStore.AddItemAsync(newItem);
@@ -62,4 +77,5 @@ namespace HIITAppFinal.ViewModels
             await Shell.Current.GoToAsync("..");
         }
     }
+    
 }
