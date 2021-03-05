@@ -11,7 +11,10 @@ namespace HIITAppFinal.ViewModels
     {
         private string itemId;
         private string text;
-        private string description;
+        private int set;
+        private int rest;
+        private int timer;
+
         public string Id { get; set; }
 
         public string Text
@@ -20,10 +23,20 @@ namespace HIITAppFinal.ViewModels
             set => SetProperty(ref text, value);
         }
 
-        public string Description
+        public int Set
         {
-            get => description;
-            set => SetProperty(ref description, value);
+            get => set;
+            set => SetProperty(ref set, value);
+        }
+        public int Rest
+        {
+            get => rest;
+            set => SetProperty(ref rest, value);
+        }
+        public int Timer
+        {
+            get => timer;
+            set => SetProperty(ref timer, value);
         }
 
         public string ItemId
@@ -46,7 +59,9 @@ namespace HIITAppFinal.ViewModels
                 var item = await DataStore.GetItemAsync(itemId);
                 Id = item.Id;
                 Text = item.Text;
-                Description = item.Description;
+                Set = item.Set;
+                Timer = item.Timer;
+                Rest = item.Rest;
             }
             catch (Exception)
             {

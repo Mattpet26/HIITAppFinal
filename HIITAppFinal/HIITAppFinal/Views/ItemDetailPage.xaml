@@ -2,13 +2,43 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HIITAppFinal.Views.ItemDetailPage"
+             xmlns:vm="clr-namespace:HIITAppFinal.ViewModels"
              Title="{Binding Title}">
 
-    <StackLayout Spacing="20" Padding="15">
-        <Label Text="Text:" FontSize="Medium" />
-        <Label Text="{Binding Text}" FontSize="Small"/>
-        <Label Text="Description:" FontSize="Medium" />
-        <Label Text="{Binding Description}" FontSize="Small"/>
-    </StackLayout>
-    
+    <ContentPage.BindingContext>
+        <vm:ItemDetailViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#234F1E</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <ScrollView Grid.Row="1">
+        <StackLayout Spacing="20" Padding="15">
+
+            <Label x:Name="lblStopwatch" 
+           FontSize="36"
+           HorizontalOptions="CenterAndExpand"
+           VerticalOptions="CenterAndExpand"/>
+
+            <Button x:Name="Start" Clicked="Start_Clicked" Text="Start"/>
+            <Button x:Name="Stop" Clicked="Stop_Clicked" Text="Stop"/>
+            <Button x:Name="Reset" Clicked="Reset_Clicked" Text="Reset"/>
+
+            <Label Text="Workout:" FontSize="Medium" />
+            <Label Text="{Binding Text}" FontSize="Small"/>
+            <Label Text="Sets:" FontSize="Medium" />
+            <Label Text="{Binding Set}" FontSize="Small"/>
+            <Label Text="Timed Workout:" FontSize="Medium" />
+            <Label Text="{Binding Timer}" FontSize="Small"/>
+            <Label Text="Rest Period:" FontSize="Medium" />
+            <Label Text="{Binding Rest}" FontSize="Small"/>
+
+            <Button x:Name="go" Clicked="SetTime_Clicked" Text="Workout!"/>
+
+        </StackLayout>
+    </ScrollView>
 </ContentPage>
