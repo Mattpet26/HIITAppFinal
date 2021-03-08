@@ -1,4 +1,6 @@
-﻿using HIITAppFinal.ViewModels;
+﻿using HIITAppFinal.Services;
+using HIITAppFinal.ViewModels;
+using Microsoft.Exchange.WebServices.Data;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -54,7 +56,7 @@ namespace HIITAppFinal.Views
             stopwatch.Reset();
         }
 
-        private async Task SetTime_Clicked(object sender, System.EventArgs e)
+        private void SetTime_Clicked(object sender, System.EventArgs e)
         {
             if (!stopwatch.IsRunning)
             {
@@ -73,12 +75,11 @@ namespace HIITAppFinal.Views
                 });
             }
 
-            while (stopwatch.Elapsed.Seconds < _vm.Timer)
+            while (stopwatch.Elapsed.Seconds > _vm.Timer)
             {
                 stopwatch.Stop();
                 stopwatch.Reset();
             }
-
         }
     }
 }
