@@ -37,7 +37,7 @@ namespace HIITAppFinal.Views
             count++;
             ((Button)sender).Text = $"You clicked {count} times.";
 
-            if (count == 42)
+            if (count == 5)
             {
                 DisplayAlert("Hidden Feature!!!", "You earned the clicky button star!!", "Ok");
                 _vm.AddStarCount();
